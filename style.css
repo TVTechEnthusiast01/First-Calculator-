@@ -1,5 +1,7 @@
 /* select all before and after elements to make it easier to size */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
     font-weight: normal;
@@ -15,7 +17,8 @@ body {
 .calculator-grid {
     display: grid;
     justify-content: center;
-    align-items: center;
+    /* entire content to be in the center not just the buttons */
+    align-content: center;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
     /* output can grow as large as inputted */
@@ -23,41 +26,41 @@ body {
 }
 
 /* select the buttons for styling */
-.calculator-grid > button {
-cursor: pointer;
-font-size: 2rem;
-border: 1px solid white;
-outline: none;
-background-color: rgba(red, green, blue, alpha);
+.calculator-grid>button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
 }
 
-.calculator-grid > button:hover {
+.calculator-grid>button:hover {
     background-color: rgba(255, 255, 255, .9);
-    }
+}
 
 .span-two {
-        grid-column: span 2;
-    }
+    grid-column: span 2;
+}
 
-.outpuut {
+.output {
     /* from column 1 to negative 1 */
-        grid-column: 1 / -1;
-        background-color: rgba(0, 0, 0, .75);
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-around;
-        flex-direction: column;
-        padding: 10px;
-        word-wrap: break-word;
-        word-break: break-all;
-    }
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
 
-    .outpuut .previous-operand {
-        color:rgba(255, 255, 255, .75);
-        font-size: 1.5rem;
-    }
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
 
-    .outpuut .current-operand {
-        color:white;
-        font-size: 2.5rem;
-    }
+.output .current-operand {
+    color: white;
+    font-size: 2.5rem;
+}
