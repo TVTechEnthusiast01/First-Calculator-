@@ -51,7 +51,7 @@ class calculatorOperation {
         // have the current operation value be taken into the prevoius operation value when a new operation is used
         this.operation = operation
         this.previousOperand = this.currentOperand
-        this.currentOperand = ""
+        this.currentOperand = ''
     }
 
     // computes selected values to display
@@ -102,40 +102,31 @@ class calculatorOperation {
     // helper function to help display large numbers with breakpoints
     getDisplayNumber(number) {
 
-return number
-        // //to parse numbers which are not numbers e.g . / split the display number to have a number before and after .
-        // const stringNumber = number.toString()
-        // const integerDigits = parseFloat(stringNumber.split('.')[0]) // obtain the first part before the peroid character 
-        // const decimalDigits = stringNumber.split('.')[1] // obtain the second part after the peroid character 
+        // return number
+        //to parse numbers which are not numbers e.g . / split the display number to have a number before and after .
+        const stringNumber = number.toString()
+        const integerDigits = parseFloat(stringNumber.split('.')[0]) // obtain the first part before the period character 
+        const decimalDigits = stringNumber.split('.')[1] // obtain the second part after the period character 
 
-        // //get integer display separately 
-        // let integerDisplay
-        // if (isNaN(integerDigits)) { // if not a number anytime a value is inputted
-        //     integerDisplay = ''
-        // }
-        // else {
-        //     // can never be any decimals after this value when it is converted to a string
-        //     integerDisplay = integerDigits.toLocaleString('en', {
-        //         maximumFractionDigits: 0
-        //     })
+        //get integer display separately 
+        let integerDisplay
+        if (isNaN(integerDigits)) { // if not a number anytime a value is inputted
+            integerDisplay = ''
+        }
+        else {
+            // can never be any decimals after this value when it is converted to a string
+            integerDisplay = integerDigits.toLocaleString('en', {
+                maximumFractionDigits: 0
+            })
+        }
 
-        //     // if the decimal digits is not null we should display the operand and decimal
-        //     if (decimalDigits != null) {
+        // if the decimal digits is not null we should display the operand and decimal
+        if (decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}` // back ticks required to concatenate the string
+        } else {
+            return integerDisplay
+        }
 
-        //         // integerDisplay.concat ('.', decimalDigits)
-        //         return [integerDisplay, '.', decimalDigits].join('') // return the display value with a decimal and digits
-
-        //     }
-        //     else {
-        //         return number
-        //     }
-        //}
-
-    // // have string work without decimal points and just numbers
-    // // convert the string value into an actual number 
-    // const floatNumber = parseFloat(number)
-    // if (isNaN(floatNumber))return '' //return empty string since it is not an acatual number
-    //     return floatNumber.toLocaleString('en') //pass a language
     }
 
 
@@ -149,7 +140,7 @@ return number
 
 
             this.previousOperandTextElement.innerText =
-                this.getDisplayNumber(this.previousOperand) + this.operation
+                `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
         }
         else {
             this.previousOperandTextElement.innerText = '' // calculated operands will clear from the previous display
@@ -210,3 +201,5 @@ deleteButton.addEventListener('click', button => {
     calculator.delete()
     calculator.updateDisplay()
 })
+
+
